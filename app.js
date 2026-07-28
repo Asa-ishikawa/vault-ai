@@ -6,36 +6,38 @@ const ctx = canvas.getContext("2d");
 videoFile.addEventListener("change", () => {
 
     const file = videoFile.files[0];
-
-    if(!file) return;
+    if (!file) return;
 
     const url = URL.createObjectURL(file);
 
     video.src = url;
+    video.load();
 
 });
 
-video.addEventListener("loadedmetadata",()=>{
+video.addEventListener("loadeddata", () => {
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
+    video.play();
+
 });
 
-document.getElementById("detectBtn").addEventListener("click",()=>{
+document.getElementById("detectBtn").addEventListener("click", () => {
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle="red";
+    ctx.fillStyle = "red";
 
     ctx.beginPath();
 
     ctx.arc(
-        canvas.width/2,
-        canvas.height/2,
+        canvas.width / 2,
+        canvas.height / 2,
         15,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
     ctx.fill();
