@@ -1,46 +1,64 @@
+// =========================
+// 跳び箱AI採点システム
+// app.js
+// =========================
+
 const videoFile = document.getElementById("videoFile");
 const video = document.getElementById("video");
 const canvas = document.getElementById("outputCanvas");
 const ctx = canvas.getContext("2d");
+const status = document.getElementById("status");
 
-videoFile.addEventListener("change", () => {
+// ------------------------
+// 動画を選択
+// ------------------------
 
-    const file = videoFile.files[0];
+videoFile.addEventListener("change", function () {
+
+    const file = this.files[0];
+
     if (!file) return;
 
     const url = URL.createObjectURL(file);
 
     video.src = url;
+
     video.load();
 
 });
 
-video.addEventListener("loadeddata",()=>{
+// ------------------------
+// 動画の準備完了
+// ------------------------
 
-    canvas.width = video.clientWidth;
+video.addEventListener("loadeddata", function () {
 
-    canvas.height = video.clientHeight;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
 
-    video.play();
+    canvas.style.width = video.clientWidth + "px";
+    canvas.style.height = video.clientHeight + "px";
+
+    status.textContent = "動画の読み込み完了";
 
 });
 
-document.getElementById("detectBtn").addEventListener("click", () => {
+// ------------------------
+// 骨格検出開始
+// ------------------------
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+document.getElementById("detectBtn").addEventListener("click", function () {
 
-    ctx.fillStyle = "red";
+    if (!video.src) {
 
-    ctx.beginPath();
+        alert("先に動画を選択してください。");
 
-    ctx.arc(
-        canvas.width / 2,
-        canvas.height / 2,
-        40,
-        0,
-        Math.PI * 2
-    );
+        return;
 
-    ctx.fill();
+    }
+
+    status.textContent = "AI解析中...";
+
+    startPose(video, canvas, ctx);
 
 });

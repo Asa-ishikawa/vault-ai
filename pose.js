@@ -3,8 +3,28 @@
 // Version1
 // =========================
 
-function startPose(){
+function startPose(video, canvas, ctx){
 
-    alert("次回ここへAIを組み込みます！");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle="lime";
+
+    ctx.beginPath();
+
+    ctx.arc(
+
+        canvas.width/2,
+
+        canvas.height/2,
+
+        40,
+
+        0,
+
+        Math.PI*2
+
+    );
+
+    ctx.fill();
 
 }

@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跳び箱AI採点システム</title>
+
+    <title>跳び箱AI採点システム Ver3.0</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- MediaPipe Pose -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+
 </head>
 
 <body>
@@ -42,15 +52,17 @@
 
         <div id="videoContainer">
 
-    <video
-        id="video"
-        controls
-        playsinline>
-    </video>
+            <video
+                id="video"
+                controls
+                playsinline>
+            </video>
 
-    <canvas id="outputCanvas"></canvas>
+            <canvas id="outputCanvas"></canvas>
 
-</div>
+        </div>
+
+        <br>
 
         <button id="detectBtn">
 
@@ -60,10 +72,23 @@
 
     </div>
 
+    <div class="result">
+
+        <h2>AI解析結果</h2>
+
+        <p id="status">
+
+            動画を読み込んでください
+
+        </p>
+
+    </div>
+
 </div>
 
 <script src="pose.js"></script>
 <script src="app.js"></script>
 
 </body>
+
 </html>
