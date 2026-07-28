@@ -15,10 +15,11 @@ videoFile.addEventListener("change", () => {
 
 });
 
-video.addEventListener("loadeddata", () => {
+video.addEventListener("loadeddata",()=>{
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    canvas.width = video.clientWidth;
+
+    canvas.height = video.clientHeight;
 
     video.play();
 
@@ -35,7 +36,7 @@ document.getElementById("detectBtn").addEventListener("click", () => {
     ctx.arc(
         canvas.width / 2,
         canvas.height / 2,
-        15,
+        40,
         0,
         Math.PI * 2
     );
