@@ -15,6 +15,6 @@ videoFile.addEventListener("change",()=>{
 
 document.getElementById("detectBtn").addEventListener("click",()=>{
 
-    alert("次回からAI骨格検出を追加します。");
+   startPose(); 
 
 });
