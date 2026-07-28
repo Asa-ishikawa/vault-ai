@@ -62,3 +62,4 @@ document.getElementById("detectBtn").addEventListener("click", function () {
     startPose(video, canvas, ctx);
 
 });
+console.log("app.js 読み込みOK");
